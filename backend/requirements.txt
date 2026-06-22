@@ -6,3 +6,4 @@ pydantic
 sqlalchemy
 python-multipart
 python-dotenv
+pillow

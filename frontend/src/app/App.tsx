@@ -532,7 +532,7 @@ function Navbar({ view, setView, onDownload }: { view: string; setView: (v: stri
             <KavachShield size={32} glow={false} />
           </div>
           <span style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: "17px", color: C.t1, letterSpacing: "-0.02em" }}>
-            Cyber<span style={{ color: C.saffron }}>Kavach</span> AI
+            Netra<span style={{ color: C.saffron }}>Guard</span> AI
           </span>
         </div>
 
@@ -1364,7 +1364,7 @@ function CTAFooter() {
 
         <div style={{ borderTop: `1px solid ${C.border}` }} className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: "15px", color: C.t1 }}>
-            Cyber<span style={{ color: C.saffron }}>Kavach</span> AI
+            Netra<span style={{ color: C.saffron }}>Guard</span> AI
           </div>
           <div style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", color: C.t3, textAlign: "center" }}>
             ET AI Hackathon 2.0 · Problem Statement 6 · Digital Public Safety
@@ -1473,7 +1473,7 @@ function MobileAppView() {
                 <div className="absolute top-16 left-4 right-4 z-50 p-3 rounded-xl flex items-center gap-3" style={{ background: C.emerald, boxShadow: "0 8px 32px rgba(0,229,160,0.4)" }}>
                   <span className="text-xl">✅</span>
                   <div>
-                    <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "13px", color: C.void }}>Alert Broadcasted</div>
+                    <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "13px", color: C.void }}>WhatsApp Alert Sent</div>
                     <div style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", color: "rgba(5,10,20,0.8)" }}>Live location shared with 3 emergency contacts</div>
                   </div>
                 </div>
@@ -2314,8 +2314,8 @@ function SectionCampaign() {
               </div>
             </div>
             {!alertSent
-              ? <button onClick={() => setAlertSent(true)} className="shrink-0 px-4 py-2 rounded-xl text-sm font-semibold" style={{ background: C.saffron, color: "#fff", fontFamily: "Inter, sans-serif", boxShadow: `0 0 20px rgba(255,107,0,0.4)` }}>
-                  Send Pre-emptive Alert
+              ? <button onClick={() => setAlertSent(true)} className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold" style={{ background: C.emerald, color: "#fff", fontFamily: "Inter, sans-serif", boxShadow: `0 0 20px rgba(0,229,160,0.4)` }}>
+                  <MessageCircle size={16} /> Send WhatsApp Alert
                 </button>
               : <div className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-xl" style={{ background: "rgba(0,229,160,0.15)", border: "1px solid rgba(0,229,160,0.3)" }}>
                   <Check size={14} color={C.emerald} />

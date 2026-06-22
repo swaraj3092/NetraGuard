@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CyberKavach AI - Scam Interrupt Demo</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        #overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1000; color: white; text-align: center; padding-top: 20%; font-size: 2em;
+        }
+        .yellow { background-color: rgba(255, 165, 0, 0.9); }
+        .red { background-color: rgba(255, 0, 0, 0.9); }
+    </style>
+</head>
+<body>
+    <h1>Scam Interrupt WebSocket Test</h1>
+    <div>
+        <label>Simulate Call Transcript:</label><br/>
+        <input type="text" id="messageText" style="width: 400px;" autocomplete="off"/>
+        <button onclick="sendMessage(event)">Send</button>
+    </div>
+    <ul id='messages'></ul>
+
+    <div id="overlay">
+        <h1 id="overlay-text"></h1>
+    </div>
+
+    <script>
+        var ws = new WebSocket("ws://localhost:8000/ws/scam-interrupt");
+        ws.onmessage = function(event) {
+            var messages = document.getElementById('messages');
+            var message = document.createElement('li');
+            var data = JSON.parse(event.data);
+            var content = document.createTextNode("Stage: " + data.detected_stage + " | Overlay: " + data.overlay_action);
+            message.appendChild(content);
+            messages.appendChild(message);
+
+            var overlay = document.getElementById("overlay");
+            var overlayText = document.getElementById("overlay-text");
+            if (data.overlay_action === "RED_INTERRUPT") {
+                overlay.className = "red";
+                overlayText.innerText = "ACTIVE FRAUD DETECTED! DISCONNECT IMMEDIATELY.";
+                overlay.style.display = "block";
+            } else if (data.overlay_action === "YELLOW_WARNING") {
+                overlay.className = "yellow";
+                overlayText.innerText = "WARNING: Suspicious Call Patterns Detected.";
+                overlay.style.display = "block";
+            }
+        };
+
+        function sendMessage(event) {
+            var input = document.getElementById("messageText");
+            ws.send(input.value);
+            input.value = '';
+            event.preventDefault();
+        }
+    </script>
+</body>
+</html>
